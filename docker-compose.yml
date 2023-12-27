@@ -1,0 +1,16 @@
+version: '3'
+services:
+  zookeeper:
+    build:
+      context: .
+      dockerfile: zookeeper/Dockerfile
+    ports:
+      - '2181:2181'
+  kafka:
+    build:
+      context: .
+      dockerfile: kafka/Dockerfile
+    ports:
+      - '9092:9092'
+    depends_on:
+      - zookeeper
